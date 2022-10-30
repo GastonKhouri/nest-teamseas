@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Donation {
+  id: ID!
+  count: Int!
+  displayName: String!
+  email: String!
+  mobile: String
+  team: String
+  message: String
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  donations(direction: String = "desc", field: String = "createdAt"): [Donation!]!
+  donation(id: String!): Donation!
+  totalDonations: Int!
+}
+
+type Mutation {
+  createDonation(createDonationInput: CreateDonationInput!): Donation!
+
+  """Build database"""
+  executeSeed: Boolean!
+}
+
+input CreateDonationInput {
+  count: Int!
+  displayName: String!
+  email: String!
+  mobile: String
+  team: String
+  message: String
+}
+
+type Subscription {
+  totalUpdated: Int!
+}
